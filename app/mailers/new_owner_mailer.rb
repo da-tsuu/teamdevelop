@@ -1,0 +1,2 @@
+class NewOwnerMailer < ApplicationMailer
+end

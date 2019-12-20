@@ -39,8 +39,12 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    @team.destroy
-    redirect_to teams_url, notice: I18n.t('views.messages.delete_team')
+    if @team.update(team_params)
+      redirect_to @team, notice: I18n.t('views.messages.update_team')#チーム更新に成功しました
+    else
+      flash.now[:error] = I18n.t('views.messages.failed_to_save_team')#保存に失敗しました
+      render :edit
+    end
   end
 
   def dashboard

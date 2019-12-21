@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         resources :comments
       end
     end
+    post 'change_team_owner'
   end
 
   devise_scope :user do
